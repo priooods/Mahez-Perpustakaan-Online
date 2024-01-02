@@ -17,4 +17,6 @@ class UserTab extends Authenticatable
         'password',
         'm_access_tabs_id'
     ];
+
+    protected $hidden  = ['password'];
 }

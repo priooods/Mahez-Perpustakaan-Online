@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('m_category_tabs', function (Blueprint $table) {
             $table->integerIncrements('id');
+            $table->unsignedBigInteger('user_tabs_id');
             $table->char('title',50);
             $table->timestamps();
+            $table->foreign('user_tabs_id')->on('user_tabs')->references('id')->onDelete('cascade');
         });
     }
 

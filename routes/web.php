@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['authremove'])->group(function () {
+    Route::post('postlogin',[UserController::class,'login']);
+    Route::get('register',[UserController::class,'viewRegister']);
+    Route::get('/', [UserController::class,'viewLogin'])->name('login');
+    Route::resource('user',UserController::class);
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('logout',[UserController::class,'logout']);
+    Route::resource('book',BookController::class);
+    Route::resource('category',CategoryController::class);
+    Route::post('book/delete/{id}',[BookController::class,'delete']);
+    Route::post('book/download/{type}/{id}',[BookController::class,'download']);
+    Route::post('book/update/{id}',[BookController::class,'bookupdate']);
+    Route::post('category/delete/{id}',[CategoryController::class,'delete']);
+    Route::post('category/update/{id}',[CategoryController::class,'categoryupdate']);
 });

@@ -4,21 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Alert extends Component
+class Sidemenu extends Component
 {
-    public $variant = 'blue' | 'red' | 'emerald' | 'yellow';
-    public $title;
-    public $description;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($variant,$title,$description)
+    public function __construct()
     {
-        $this->variant = $variant;
-        $this->title = $title;
-        $this->description = $description;
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ class Alert extends Component
      */
     public function render()
     {
-        return view('components.alert');
+        return view('components.sidemenu');
     }
 }

@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UserAccess
+class ManageRoute
 {
     /**
      * Handle an incoming request.
@@ -14,11 +15,11 @@ class UserAccess
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $access)
+    public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->m_access_tabs_id == $access){
-            return $next($request);
+        if(auth()->user()){
+            return redirect('book');
         }
-        return dd('You dont have permission');
+        return $next($request);
     }
 }
