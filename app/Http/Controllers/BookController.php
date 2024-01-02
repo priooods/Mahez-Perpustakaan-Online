@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BookExport;
 use App\Models\book\TBookTab;
 use App\Models\category\MCategoryTab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class BookController extends Controller
@@ -32,6 +34,10 @@ class BookController extends Controller
             'tableTitle' => 'Data Buku',
             'tableDesc' => 'Semua buku yang ada dapat kamu lihat disini',
             'usefilter' => true,
+            'excel' => [
+                'show' => auth()->user()->m_access_tabs_id == 1 ? true : false,
+                'url' => 'book/excel'
+            ],
             'filtering' => [
                 'action' => 'book?'.$request,
                 'filterOptions' => $this->category->all()
@@ -236,5 +242,9 @@ class BookController extends Controller
             DB::rollBack();
             return redirect('book');
         }
+    }
+
+    public function exportExcel(){
+        return Excel::download(new BookExport,'book.xlsx');
     }
 }

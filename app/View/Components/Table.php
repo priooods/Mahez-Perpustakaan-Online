@@ -13,6 +13,7 @@ class Table extends Component
     public $column;
     public $row;
     public $formLink;
+    public $excel;
     /**
      * Create a new component instance.
      *
@@ -25,6 +26,7 @@ class Table extends Component
         array $column,
         $row,
         string $formLink, 
+        $excel = null,
         $filtering = null,
     )
     {
@@ -35,6 +37,7 @@ class Table extends Component
         $this->column = $column;
         $this->row = $row;
         $this->formLink = $formLink;
+        $this->excel = $excel;
     }
 
     /**

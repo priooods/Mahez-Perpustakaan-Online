@@ -23,6 +23,12 @@
             @endif
             <x-button label="Buat baru" variant="green" type="button" 
                 onclick="window.location='{{ url($formLink) }}'"></x-button>
+            @if (isset($excel) && $excel['show'] == true)
+                <form action="{{$excel['url']}}" method="post">
+                    @csrf
+                    <x-button label="Export Excel" variant="green" type="submit"></x-button>
+                </form>
+            @endif
         </div>
     </div>
     <div class=" rounded-md border-gray-400/45 mt-8 border">

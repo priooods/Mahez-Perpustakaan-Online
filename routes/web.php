@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('book/delete/{id}',[BookController::class,'delete']);
     Route::post('book/download/{type}/{id}',[BookController::class,'download']);
     Route::post('book/update/{id}',[BookController::class,'bookupdate']);
+    Route::post('book/excel',[BookController::class,'exportExcel']);
     Route::post('category/delete/{id}',[CategoryController::class,'delete']);
     Route::post('category/update/{id}',[CategoryController::class,'categoryupdate']);
 });
