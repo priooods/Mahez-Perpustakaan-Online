@@ -35,7 +35,7 @@ class BookController extends Controller
             'tableDesc' => 'Semua buku yang ada dapat kamu lihat disini',
             'usefilter' => true,
             'excel' => [
-                'show' => auth()->user()->m_access_tabs_id == 1 ? true : false,
+                'show' => true,
                 'url' => 'book/excel'
             ],
             'filtering' => [
