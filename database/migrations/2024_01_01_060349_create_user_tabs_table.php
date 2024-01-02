@@ -18,7 +18,7 @@ return new class extends Migration
             $table->char('fullname', 50);
             $table->char('email', 50);
             $table->string('password');
-            $table->unsignedTinyInteger('m_access_tabs_id')->default(1)->comment('0 = Admin');
+            $table->unsignedTinyInteger('m_access_tabs_id')->default(2)->comment('1 = Admin');
             $table->timestamps();
             $table->foreign('m_access_tabs_id')->on('m_access_tabs')->references('id');
         });
