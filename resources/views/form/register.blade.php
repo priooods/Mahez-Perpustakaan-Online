@@ -11,8 +11,8 @@
                 method="post" class="grid grid-cols-1 gap-5">
                 @csrf
                 <x-input label="Fullname" type="text" name="fullname" required></x-input>
-                <x-input label="Email" type="email" name="email" required></x-input>
-                <x-input label="Password" type="password" name="password" required></x-input>
+                <x-input label="Email" inputType="email" name="email" required></x-input>
+                <x-input label="Password" inputType="password" name="password" required></x-input>
                 @isset($failure)
                     <x-alert variant="{{$failure['response_notification']['color']}}" 
                         title="{{$failure['response_notification']['title']}}" 

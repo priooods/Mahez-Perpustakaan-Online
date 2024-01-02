@@ -87,7 +87,7 @@ class UserController extends Controller
         try {
             DB::beginTransaction();
             $request['password'] = Hash::make($request->password);
-            $request['m_access_tabs_id'] = 123;
+            $request['m_access_tabs_id'] = 2;
             $this->user->create($request->all());
             DB::commit();
             return redirect('book');
