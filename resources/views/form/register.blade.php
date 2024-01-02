@@ -26,7 +26,7 @@
                 <x-button type="submit" variant="blue" label="Buat Akun"></x-button>
             </form>
             <p class="text-xs text-center mt-2">Sudah memiliki akun ? 
-                <a href="" class="text-blue-500 hover:text-blue-600 underline">Masuk</a></p>
+                <a href="/" class="text-blue-500 hover:text-blue-600 underline">Masuk</a></p>
         </div>
     </div>
 @endsection
