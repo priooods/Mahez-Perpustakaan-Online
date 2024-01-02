@@ -248,7 +248,8 @@ class BookController extends Controller
         if(auth()->user()->m_access_tabs_id == 1){
             return Excel::download(new BookExport($this->book->get()),'book.xlsx');
         } else {
-            return Excel::download(new BookExport($this->book->where('user_tabs_id', auth()->user()->user_tabs_id)->get()),'book.xlsx');
+            return Excel::download(new BookExport(
+                $this->book->where('user_tabs_id', auth()->user()->user_tabs_id)->get()),'book.xlsx');
         }
     }
 }
