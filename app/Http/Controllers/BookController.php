@@ -245,6 +245,12 @@ class BookController extends Controller
     }
 
     public function exportExcel(){
-        return Excel::download(new BookExport,'book.xlsx');
+        $query = array();
+        if(auth()->user()->m_access_tabs_id == 1){
+            $query = $this->book->all();
+        } else {
+            $query = $this->book->where('user_tabs_id', auth()->user()->user_tabs_id)->get();
+        }
+        return Excel::download(new BookExport($query),'book.xlsx');
     }
 }
