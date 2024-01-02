@@ -3,21 +3,22 @@
 namespace App\Exports;
 
 use App\Models\book\TBookTab;
-use Maatwebsite\Excel\Concerns\FromArray;
-use Illuminate\Contracts\Support\Responsable;
-use Maatwebsite\Excel\Concerns\Exportable;
-class BookExport implements Responsable,FromArray
+use Maatwebsite\Excel\Concerns\FromCollection;
+class BookExport implements FromCollection
 {
-    use Exportable;
-    public function __construct(array $query)
+    public function __construct($access,$userid)
     {
-        $this->query = $query;
+        $this->access = $access;
+        $this->userid = $userid;
     }
     /**
     // * @return \Illuminate\Support\Collection
     */
-    public function array(): array
+    public function collection()
     {
-        return $this->query;
+        if($this->access == 1){
+            return TBookTab::all();
+        } 
+        return TBookTab::where('user_tabs_id',$this->userid)->get();
     }
 }
