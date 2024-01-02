@@ -246,6 +246,6 @@ class BookController extends Controller
 
     public function exportExcel(){
         
-        return Excel::download(new BookExport(auth()->user()->m_access_tabs_id, auth()->user()->user_tabs_id),'book.xlsx');
+        return Excel::download(new BookExport(),'book.xlsx');
     }
 }
